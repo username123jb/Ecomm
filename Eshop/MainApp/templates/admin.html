@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+{% block body %}
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="cart-title mt-50">
+                            <a href="/addproduct/" class="btn btn-success">Add Product</a>
+                            <a href="/orderadmin/" class="btn btn-success">Orders</a>
+                            <h2>Products</h2>
+                        </div>
+                        <div class="cart-table clearfix">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Name</th>
+                                        <th>Size</th>
+                                        <th>Price</th>
+                                        <th>Add Sizes</th>
+                                        <th>See the Available Size</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in Data %}
+                                    <tr>
+                                        <td class="cart_product_img col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-4" height="100px" width="85px" >
+                                            <a href="" > <img src="{{i.img1.url}}" alt="Product" height="150px" width="150px"></a>
+                                        </td>
+                                        <td >
+                                            <h5>{{i.name}}</a> </h5>
+                                        </td>
+                                        <td >
+                                            <h5>{{i.size}}</h5>
+                                        </td>
+                                        <td class="price">
+                                            <span>{{i.price}}</span>
+                                        </td>
+                                        <td><a class="btn btn-info" href="/sizeadd/{{i.id}}/">Add sizes</a> </td>
+                                        <td><a class="btn btn-info" href="#">Sizes Available</a> </td>
+                                        <td><a class="btn btn-info" href="/edit/{{i.id}}">Edit</a> </td>
+                                        <td><a class="btn btn-info" href="/delete/{{i.id}}">Delete</a> </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+    <!-- ##### Main Content Wrapper End ##### -->
+{% endblock %}
+</html>

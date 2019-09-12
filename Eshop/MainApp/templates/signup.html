@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block body %}
+
+<div class="modal-dialog text-center"  style="margin-top : 150px;" >
+    <div >
+      <div class="modal-content">
+
+          <h2>SIGNUP</h2>
+        <div class="col-17 form-input">
+          <form action="" method="post">
+              {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" class="form-control" name="uname" placeholder="User Name" value="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="first_name" value="" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="last_name" value="" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Mail Id" value="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="pward" placeholder="Password" value="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="cpward" placeholder="Confirm Password" value="">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">SignUp</button>
+                </div>
+          </form>
+              {% if messages %}
+                <div class="alert alert-danger">
+                {% for i in messages %}
+                     {{i}}
+                {% endfor %}
+                </div>
+              {% endif %}
+        </div>
+
+      </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+</html>

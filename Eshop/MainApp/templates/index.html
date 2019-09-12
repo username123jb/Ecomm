@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PARAMHANS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+    <!-- Favicon  -->
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href='/'>PARAMHANS</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {% with request.resolver_match.url_name as url_name %}
+        <li ><a href="/">HOME</a></li>
+        <li ><a href="/shop/sample/">SHOP</a></li>
+        <li ><a href="/cart/">CART</a></li>
+        <li ><a href="/checkout/">CHECKOUT</a></li>
+        {% if request.user.is_authenticated %}
+        <li ><a href="/logout/">LOGOUT</a></li>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+         <li class="nav-item">
+         <a class="nav-link" href="/pastorder/">ORDERS</a>
+               </li>
+                {% endif %}
+        {% if not request.user.is_authenticated %}
+        <li ><a href="/login/">LOGIN</a></li>
+        {% endif %}
+        {% if user.is_superuser %}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/adminpage/"><b>ADMIN PANEL</b></a>
+                    </li>
+                {% endif %}
+
+        {% endwith %}
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>    </div>
+  </div>
+</nav>
+{% block body %}
+<div class="jumbotron text-center">
+  <h1>PARAMHANS</h1>
+  <p>TERACOTTA CLAY PRODUCTS</p>
+
+</div>
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2><center>About Us</center></h2><br>
+      <p><center>Offering you the best of kitchen household products- designed pottery,which serves the purpose of both art and healthy,non-toxic food.</center></p>
+      <p><center>Delivering utensils to your doorstep that are eco-friendly,easy to clean and preserve the nutritional values of food.</center></p>
+      <p><center>"OUR SOIL IS GOLD,EAT IN GOLD"</center></p>
+<br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="text-center" >
+      <p>Contact us and we'll get back to you within 72 hours.</p>
+      <p>PARAMHANS EARTHENWARE AROMA SALES </p>
+      <p><span class="glyphicon glyphicon-phone"></span> +91 9990082027</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> paramhansearthenware@gmail.com</p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+
+</footer>
+
+    <script src="{% static 'scripting.js' %}"></script>
+
+</body>
+
+</html>

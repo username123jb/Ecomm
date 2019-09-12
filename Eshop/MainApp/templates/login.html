@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+</head>
+<body>
+{% block body %}
+
+<div class="modal-dialog text-center"  style="margin-top : 150px;" >
+    <div >
+      <div class="modal-content">
+        <div class="col-12 user-img">
+          <img src="{% static 'img/face.png' %}" width="50" height="50">
+        </div>
+          <h2>LOGIN</h2>
+        <div class="col-17 form-input">
+         <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" class="form-control" name="uname" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="pward" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
+             <a class="btn btn-info" href="/signup/">SignUp</a>
+            <div class="col-12 forgot">
+            <a href="/accounts/password_reset/">Forget Password</a>
+            </div>
+          </form>
+            {% if messages %}
+               <div class="alert alert-danger">
+               {% for i in messages %}
+                 {{i}}
+               {% endfor %}
+               </div>
+            {% endif %}
+        </div>
+
+      </div>
+    </div>
+</div>
+</body>
+{% endblock body %}
+
+
+
+</html>
